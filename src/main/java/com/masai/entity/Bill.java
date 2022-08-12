@@ -22,8 +22,8 @@ public class Bill {
         return billId;
     }
 
-    public void setBillId(String billed) {
-        this.billId = billed;
+    public void setBillId(String billId) {
+        this.billId = billId;
     }
 
     public LocalDateTime getBillDate() {
@@ -45,7 +45,7 @@ public class Bill {
     @Override
     public String toString() {
         return "Bill{" +
-                "billed='" + billId + '\'' +
+                "billId='" + billId + '\'' +
                 ", billDate=" + billDate +
                 ", order=" + order +
                 '}';
