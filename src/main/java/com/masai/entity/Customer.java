@@ -1,5 +1,6 @@
 package com.masai.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Customer {
 	private Integer age;
 	private String gender;
 	private String mobileNumber;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	private String email;
 	/**

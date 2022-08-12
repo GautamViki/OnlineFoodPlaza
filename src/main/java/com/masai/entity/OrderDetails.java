@@ -1,5 +1,6 @@
 package com.masai.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class OrderDetails {
     @Column(updatable = false, nullable = false)
     private Integer orderId;
     private LocalDateTime order;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private FoodCart cart;
     private String orderStatus;
 

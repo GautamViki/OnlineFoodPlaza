@@ -2,6 +2,7 @@ package com.masai.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,11 @@ public class Restaurant {
     @Column(updatable = false, nullable = false)
 	private String restaurantId;
 	private String restaurantName;
-	@OneToOne
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
-	@ManyToMany
+	
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Item> itemList;
 	private String managerName;
 	private String contactNumber;

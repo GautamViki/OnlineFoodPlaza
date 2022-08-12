@@ -2,11 +2,13 @@ package com.masai.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,8 +22,10 @@ public class Item {
     strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(updatable = false, nullable = false)
+	
     private String itemId;
     private String itemName;
+    @OneToOne(cascade = CascadeType.ALL)
     private Category category;
     private Integer quantity;
     private Double cost;
@@ -29,7 +33,7 @@ public class Item {
     
 
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Restaurant> restaurants;
 
 	public String getItemId() {

@@ -2,6 +2,7 @@ package com.masai.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,10 +23,10 @@ public class FoodCart {
     @Column(updatable = false, nullable = false)
     private String cid;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
     private Customer cus;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Item> itemList;
 	public String getCid() {
 		return cid;
