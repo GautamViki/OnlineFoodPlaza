@@ -13,6 +13,7 @@ public class Item {
     private Category category;
     private Integer quantity;
     private Double cost;
+	@OneToOne
 	private List<Restaurant> restaurants;
 
 	public Item(String itemId, String itemName, Category category, Integer quantity, Double cost, List<Restaurant> restaurants) {
