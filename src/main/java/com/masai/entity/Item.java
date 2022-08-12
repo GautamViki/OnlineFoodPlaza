@@ -22,15 +22,9 @@ public class Item {
 	@OneToOne
 	private List<Restaurant> restaurants;
 
-
-
-
 	public String getItemId() {
 		return itemId;
 	}
-
-
-
 
 	public void setItemId(String itemId) {
 		this.itemId = itemId;

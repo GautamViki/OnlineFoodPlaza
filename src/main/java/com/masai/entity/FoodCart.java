@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 public class FoodCart {
 	@Id
     private String cid;
+	
+	@OneToOne
     private Customer cus;
     
     @OneToOne
