@@ -1,8 +1,11 @@
 package com.masai.service;
 
+import org.springframework.stereotype.Service;
+
 import com.masai.entity.FoodCart;
 import com.masai.entity.Item;
 
+@Service
 public class FoodCartServiceImpl implements FoodCartService{
 
 	@Override

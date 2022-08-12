@@ -2,8 +2,11 @@ package com.masai.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.masai.entity.Category;
 
+@Service
 public class CategoryServiceImpl implements CategoryService{
 
 	@Override
