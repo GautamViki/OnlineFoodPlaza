@@ -1,10 +1,12 @@
 package com.masai.service;
 
 import com.masai.entity.Bill;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class BillServiceImpl implements BillService {
     @Override
     public Bill addBill(Bill bill) {
