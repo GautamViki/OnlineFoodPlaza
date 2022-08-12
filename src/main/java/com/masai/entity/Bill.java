@@ -1,27 +1,29 @@
 package com.masai.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 @Entity
 public class Bill {
-    private  String billed;
+    @Id
+    private  String billId;
     private LocalDateTime billDate;
     @OneToOne
     private OrderDetails order;
 
     public Bill(String billed, LocalDateTime billDate, OrderDetails order) {
-        this.billed = billed;
+        this.billId = billed;
         this.billDate = billDate;
         this.order = order;
     }
 
-    public String getBilled() {
-        return billed;
+    public String getBillId() {
+        return billId;
     }
 
-    public void setBilled(String billed) {
-        this.billed = billed;
+    public void setBillId(String billId) {
+        this.billId = billId;
     }
 
     public LocalDateTime getBillDate() {
@@ -43,7 +45,7 @@ public class Bill {
     @Override
     public String toString() {
         return "Bill{" +
-                "billed='" + billed + '\'' +
+                "billId='" + billId + '\'' +
                 ", billDate=" + billDate +
                 ", order=" + order +
                 '}';
