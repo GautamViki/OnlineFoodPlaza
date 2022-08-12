@@ -1,15 +1,19 @@
 package com.masai.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
+	@Id
 	private String customerId;
 	private String firstName;
 	private String lastName;
 	private Integer age;
 	private String gender;
 	private String mobileNumber;
+	@OneToOne
 	private Address address;
 	private String email;
 	/**

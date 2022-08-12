@@ -3,11 +3,14 @@ package com.masai.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
 public class Restaurant {
+	@Id
 	private String restaurantId;
 	private String restaurantName;
+	@OneToOne
 	private Address address;
 	@OneToOne
 	private List<Item> itemList;
