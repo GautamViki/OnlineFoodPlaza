@@ -16,7 +16,7 @@ public class Item {
     private Double cost;
     
     @OneToOne
-    private List<Restaurant> resturaunt;
+    private List<Restaurant> restauraunt;
 	public String getItemId() {
 		return itemId;
 	}
@@ -48,10 +48,10 @@ public class Item {
 		this.cost = cost;
 	}
 	public List<Restaurant> getResturaunt() {
-		return resturaunt;
+		return restauraunt;
 	}
 	public void setResturaunt(List<Restaurant> resturaunt) {
-		this.resturaunt = resturaunt;
+		this.restauraunt = resturaunt;
 	}
 	@Override
 	public String toString() {
