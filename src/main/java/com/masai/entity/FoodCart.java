@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,7 +15,7 @@ public class FoodCart {
 	@OneToOne
     private Customer cus;
     
-    @OneToOne
+    @OneToMany
     private List<Item> itemList;
 	public String getCid() {
 		return cid;

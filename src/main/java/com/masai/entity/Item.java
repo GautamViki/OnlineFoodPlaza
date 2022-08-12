@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 
@@ -19,7 +20,7 @@ public class Item {
     
 
 
-	@OneToOne
+	@ManyToMany
 	private List<Restaurant> restaurants;
 
 	public String getItemId() {
