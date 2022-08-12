@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface OrderService {
+public interface OrderDetailsService {
     public OrderDetails updateOrder(OrderDetails order);
 
     public OrderDetails addOrder(OrderDetails order);
