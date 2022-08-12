@@ -1,14 +1,17 @@
 package com.masai.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Login {
+    @Id
     private String userId;
     private String userName;
     private String password;
 
     public Login(String userId, String userName, String password) {
+
         this.userId = userId;
         this.userName = userName;
         this.password = password;
