@@ -2,12 +2,14 @@ package com.masai.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 @Entity
 public class OrderDetails {
     @Id
     private Integer orderId;
     private LocalDateTime order;
+    @OneToOne
     private FoodCart cart;
     private String orderStatus;
 
