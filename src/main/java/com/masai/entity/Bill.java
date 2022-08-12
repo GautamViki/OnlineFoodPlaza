@@ -1,11 +1,13 @@
 package com.masai.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 @Entity
 public class Bill {
     private  String billed;
     private LocalDateTime billDate;
+    @OneToOne
     private OrderDetails order;
 
     public Bill(String billed, LocalDateTime billDate, OrderDetails order) {
