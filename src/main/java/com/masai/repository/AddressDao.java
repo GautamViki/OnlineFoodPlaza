@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.Address;
 
 @Repository
-public interface AddressDao extends JpaRepository<Address, String>{
+public interface AddressDao extends JpaRepository<Address, Integer>{
 
 }

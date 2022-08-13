@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.Category;
 
 @Repository
-public interface CategoryDao extends JpaRepository<Category, String>{
+public interface CategoryDao extends JpaRepository<Category, Integer>{
 
 }

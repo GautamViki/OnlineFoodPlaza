@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.masai.entity.Restaurant;
 @Repository
-public interface RestaurantDao extends JpaRepository<Restaurant, String>{
+public interface RestaurantDao extends JpaRepository<Restaurant, Integer>{
 
 }

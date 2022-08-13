@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.Login;
 
 @Repository
-public interface LoginDao extends JpaRepository<Login, String>{
+public interface LoginDao extends JpaRepository<Login, Integer>{
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.Bill;
 
 @Repository
-public interface BillDao extends JpaRepository<Bill, String> {
+public interface BillDao extends JpaRepository<Bill, Integer> {
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.Item;
 
 @Repository
-public interface ItemDao extends JpaRepository<Item, String>{
+public interface ItemDao extends JpaRepository<Item, Integer>{
 
 }

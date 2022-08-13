@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.FoodCart;
 
 @Repository
-public interface FoodCartDao extends JpaRepository<FoodCart, String>{
+public interface FoodCartDao extends JpaRepository<FoodCart, Integer>{
 
 }
