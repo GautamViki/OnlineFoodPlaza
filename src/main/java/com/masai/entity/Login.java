@@ -1,37 +1,31 @@
 package com.masai.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Login {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer userId;
     private String userName;
     private String password;
 
-    public Login(String userId, String userName, String password) {
+    public Login(Integer userId, String userName, String password) {
 
         this.userId = userId;
         this.userName = userName;
         this.password = password;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

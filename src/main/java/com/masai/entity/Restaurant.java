@@ -3,24 +3,19 @@ package com.masai.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Restaurant {
 	@Id
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
-	private String restaurantId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    
+	private Integer restaurantId;
 	private String restaurantName;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -42,7 +37,7 @@ public class Restaurant {
 	public Restaurant() {
 		
 	}
-	public Restaurant(String restaurantId, String restaurantName, Address address, List<Item> itemList,
+	public Restaurant(Integer restaurantId, String restaurantName, Address address, List<Item> itemList,
 			String managerName, String contactNumber) {
 		this.restaurantId = restaurantId;
 		this.restaurantName = restaurantName;
@@ -51,10 +46,11 @@ public class Restaurant {
 		this.managerName = managerName;
 		this.contactNumber = contactNumber;
 	}
-	public String getRestaurantId() {
+	
+	public Integer getRestaurantId() {
 		return restaurantId;
 	}
-	public void setRestaurantId(String restaurantId) {
+	public void setRestaurantId(Integer restaurantId) {
 		this.restaurantId = restaurantId;
 	}
 	public String getRestaurantName() {

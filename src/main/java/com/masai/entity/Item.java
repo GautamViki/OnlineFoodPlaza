@@ -3,27 +3,21 @@ package com.masai.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 public class Item {
 	@Id
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	
-    private String itemId;
+    private Integer itemId;
     private String itemName;
     @OneToOne(cascade = CascadeType.ALL)
     private Category category;
@@ -36,11 +30,11 @@ public class Item {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Restaurant> restaurants;
 
-	public String getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(String itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 

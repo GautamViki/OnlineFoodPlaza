@@ -1,22 +1,15 @@
 package com.masai.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Address {
 	@Id
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
-	private String addressId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer addressId;
 	private String buildingName;
 	private String streetNo;
 	private String area;
@@ -41,7 +34,7 @@ public class Address {
 	}
 
 
-	public Address(String addressId, String buildingName, String streetNo, String area, String city, String state,
+	public Address(Integer addressId, String buildingName, String streetNo, String area, String city, String state,
 			String country, String pincode) {
 		this.addressId = addressId;
 		this.buildingName = buildingName;
@@ -54,12 +47,14 @@ public class Address {
 	}
 
 
-	public String getAddressId() {
+	
+
+	public Integer getAddressId() {
 		return addressId;
 	}
 
 
-	public void setAddressId(String addressId) {
+	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
 

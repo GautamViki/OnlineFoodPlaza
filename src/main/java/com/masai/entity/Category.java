@@ -1,29 +1,23 @@
 package com.masai.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Category {
 	@Id
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
-    private String catId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer catId;
     private String catName;
     
    
-	public String getCatId() {
+	public Integer getCatId() {
 		return catId;
 	}
-	public void setCatId(String catId) {
+	public void setCatId(Integer catId) {
 		this.catId = catId;
 	}
 	public String getCatName() {
