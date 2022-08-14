@@ -21,31 +21,31 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	private String email;
-	/**
-	 * @param customerId
-	 * @param firstName
-	 * @param lastName
-	 * @param age
-	 * @param gender
-	 * @param mobileNumber
-	 * @param address
-	 * @param email
-	 */
+//	/**
+//	 * @param customerId
+//	 * @param firstName
+//	 * @param lastName
+//	 * @param age
+//	 * @param gender
+//	 * @param mobileNumber
+//	 * @param address
+//	 * @param email
+//	 */
 	public Customer() {
 		
 	}
-	public Customer(Integer customerId, String firstName, String lastName, Integer age, String gender,
-			String mobileNumber, Address address, String email) {
-		super();
-		this.customerId = customerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.gender = gender;
-		this.mobileNumber = mobileNumber;
-		this.address = address;
-		this.email = email;
-	}
+//	public Customer(Integer customerId, String firstName, String lastName, Integer age, String gender,
+//			String mobileNumber, Address address, String email) {
+//		super();
+//		this.customerId = customerId;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.age = age;
+//		this.gender = gender;
+//		this.mobileNumber = mobileNumber;
+//		this.address = address;
+//		this.email = email;
+//	}
 	public Integer getCustomerId() {
 		return customerId;
 	}

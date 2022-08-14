@@ -18,33 +18,23 @@ public class Address {
 	private String country;
 	private String pincode;
 	
-	
-	/**
-	 * @param addressId
-	 * @param buildingName
-	 * @param streetNo
-	 * @param area
-	 * @param city
-	 * @param state
-	 * @param country
-	 * @param pincode
-	 */
+
 	public Address() {
 		
 	}
 
 
-	public Address(Integer addressId, String buildingName, String streetNo, String area, String city, String state,
-			String country, String pincode) {
-		this.addressId = addressId;
-		this.buildingName = buildingName;
-		this.streetNo = streetNo;
-		this.area = area;
-		this.city = city;
-		this.state = state;
-		this.country = country;
-		this.pincode = pincode;
-	}
+//	public Address(Integer addressId, String buildingName, String streetNo, String area, String city, String state,
+//			String country, String pincode) {
+//		this.addressId = addressId;
+//		this.buildingName = buildingName;
+//		this.streetNo = streetNo;
+//		this.area = area;
+//		this.city = city;
+//		this.state = state;
+//		this.country = country;
+//		this.pincode = pincode;
+//	}
 
 
 	
