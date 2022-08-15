@@ -17,13 +17,13 @@ public class BillServiceImpl implements BillService {
 	
 	@Override
 	public Bill addBill(Bill bill) {
-		// TODO Auto-generated method stub
-		return null;
+		Bill bill1 = billdao.save(bill);
+		return bill1;
 	}
 
 	@Override
 	public Bill updateBill(Bill bill) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

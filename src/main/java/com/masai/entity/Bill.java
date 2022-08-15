@@ -1,6 +1,5 @@
 package com.masai.entity;
 
-import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,7 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer billId;
-	private LocalDateTime billDate;
+	private String billDate;
 	private Integer totalItem;
 	private Double totalCost;
 	
@@ -29,11 +28,11 @@ public class Bill {
 		this.billId = billId;
 	}
 
-	public LocalDateTime getBillDate() {
+	public String getBillDate() {
 		return billDate;
 	}
 
-	public void setBillDate(LocalDateTime billDate) {
+	public void setBillDate(String billDate) {
 		this.billDate = billDate;
 	}
 

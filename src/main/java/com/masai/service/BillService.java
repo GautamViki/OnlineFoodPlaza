@@ -23,3 +23,4 @@ public interface BillService {
 
     public Double calculateTotalCost(Bill bill);
 }
+
