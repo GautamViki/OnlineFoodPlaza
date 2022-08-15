@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Foodcart {
 	@Id
@@ -18,6 +20,7 @@ public class Foodcart {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Customer customer;
 	@OneToMany(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Item> itemList;
 	
 	public Foodcart() {

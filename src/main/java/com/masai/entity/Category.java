@@ -6,13 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Cateogry {
+public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer catId;
 	private String categoryName;
 	
-	public Cateogry() {
+	public Category() {
 		
 	}
 
