@@ -1,5 +1,7 @@
 package com.masai.controller;
 
+import com.masai.exception.InvalidId;
+import com.masai.exception.NullValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,19 +34,45 @@ public class BillController {
 	public Bill updateBillHandler(@PathVariable Integer id,
 								  @PathVariable Integer totalItem,
 								  @PathVariable Double totalCost) {
-		Bill bill = billService.updateBill(id, totalItem, totalCost);
-		return bill;
+		if(id==null){
+			throw new InvalidId("Invalid URI");
+		}
+		else {
+			Bill bill = billService.updateBill(id, totalItem, totalCost);
+			if(bill==null){
+				throw new NullValueException("Value not found");
+			}
+			return bill;
+		}
 	}
 		
 	   @DeleteMapping("/{id}")
 	    public String removeBillHandler(@PathVariable Integer id) {
-	        Bill bill = billService.removeBill(id);
-	        return "Deleted " + bill;
+			if (id==null){
+				throw new InvalidId("Invalid URI");
+			}
+			else{
+				Bill bill = billService.removeBill(id);
+				if(bill==null){
+					throw new NullValueException("Value not found");
+				}
+				return "Deleted " + bill;
+			}
 	    }
 	   
 	    @GetMapping("/{id}")
 	    public Bill viewBillHandler(@PathVariable Integer id) {
-	        return billService.viewBill(id);
+			if (id==null){
+				throw new InvalidId("Invalid URI");
+			}
+			else{
+				Bill bill=billService.viewBill(id);
+				if(bill==null){
+					throw new NullValueException("Value not found");
+				}
+				return bill;
+			}
+
 	    }
 	  
 }

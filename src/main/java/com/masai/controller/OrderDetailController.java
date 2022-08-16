@@ -1,6 +1,8 @@
 package com.masai.controller;
 
 
+import com.masai.exception.InvalidId;
+import com.masai.exception.NullValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +25,16 @@ public class OrderDetailController {
 	@PutMapping("/{id}/{order}")
 	public OrderDetail updateOrderHandler(@PathVariable Integer id,
 								  @PathVariable OrderDetail order) {
-		OrderDetail order1 = orderService.updateOrder(id, order);
-		return order1;
+		if(id==null){
+			throw new InvalidId("Invalid Uri");
+		}else {
+			OrderDetail order1 = orderService.updateOrder(id, order);
+			if (order1==null){
+				throw  new NullValueException("Order not found");
+			}
+			return order1;
+		}
+
 	}
 	
 	@PostMapping("/")
@@ -34,12 +44,29 @@ public class OrderDetailController {
 	
 	   @DeleteMapping("/{id}")
 	    public String removeOrderHandler(@PathVariable Integer id) {
-	        String order = orderService.removeOrder(id);
-	        return "Deleted " + order;
+		   if(id==null){
+			   throw new InvalidId("Invalid Uri");
+		   }else {
+			   String order = orderService.removeOrder(id);
+			   if (order==null){
+				   throw  new NullValueException("Order not found");
+			   }
+			   return "Deleted " + order;
+		   }
+
 	    }
 	   
 	    @GetMapping("/{id}")
 	    public OrderDetail viewOrderHandler(@PathVariable Integer id) {
-	        return orderService.viewOrder(id);
+			if(id==null){
+				throw new InvalidId("Invalid Uri");
+			}else {
+				OrderDetail order1=orderService.viewOrder(id);
+				if (order1==null){
+					throw  new NullValueException("Order not found");
+				}
+				return order1;
+			}
+
 	    }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.masai.entity.Address;
+import com.masai.exception.FoodPlazaException;
 import com.masai.repository.AddressDao;
 import com.masai.repository.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,47 +28,61 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer addCustomer(Customer customer, UserType usertype) throws Exception {
         List<Customer> listCustomer = customerDao.findAll();
         if(listCustomer.size()>0) {
-        	for(Customer c: listCustomer) {
-        		
-        		if(c.getUserName().equals(customer.getUserName())) {
-        			System.out.println("User not available");
-        			throw new Exception();
-        		}
-        	}
-        	customer.setFoodCart(new Foodcart());
-        	customer.setUsertype(usertype);
-        	return customerDao.save(customer);
+            for(Customer c: listCustomer) {
+
+                if(c.getUserName().equals(customer.getUserName())) {
+                    System.out.println("User not available");
+                    throw new Exception();
+                }
+            }
+            customer.setFoodCart(new Foodcart());
+            customer.setUsertype(usertype);
+            return customerDao.save(customer);
         }
         else {
-        	customer.setFoodCart(new Foodcart());
-        	customer.setUsertype(usertype);
-        	return customerDao.save(customer);
+            customer.setFoodCart(new Foodcart());
+            customer.setUsertype(usertype);
+            return customerDao.save(customer);
         }
-        
     }
 
     @Override
     public Customer viewCustomer(Integer id) {
         Optional<Customer> opt = customerDao.findById(id);
-        Customer customer = opt.get();
-        return customer;
+        if(opt.isPresent()){
+            Customer customer = opt.get();
+            return customer;
+        }
+        else {
+            throw new FoodPlazaException("Customer not found");
+        }
     }
     //
 //    @Override
     public Customer updateCustomer(Integer id, String mobile, String email) {
         Optional<Customer> opt = customerDao.findById(id);
-        Customer customer1 = opt.get();
-        customer1.setEmail(email);
-        customer1.setMobileNumber(mobile);
-        return customerDao.save(customer1);
+        if(opt.isPresent()){
+            Customer customer1 = opt.get();
+            customer1.setEmail(email);
+            customer1.setMobileNumber(mobile);
+            return customerDao.save(customer1);
+        }
+        else {
+            throw new FoodPlazaException("Customer not found");
+        }
     }
 
     @Override
     public Customer removeCustomer(@PathVariable Integer id) {
         Optional<Customer> opt = customerDao.findById(id);
-        Customer customer = opt.get();
-        customerDao.delete(customer);
-        return customer;
+        if(opt.isPresent()){
+            Customer customer = opt.get();
+            customerDao.delete(customer);
+            return customer;
+        }
+        else {
+            throw new FoodPlazaException("Customer not found");
+        }
     }
 
     @Override
@@ -86,5 +101,4 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return null;
 	}
-
 }

@@ -2,6 +2,7 @@ package com.masai.controller;
 
 import javax.validation.Valid;
 
+import com.masai.exception.InvalidId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,13 @@ public class LoginController {
 	
 	@PostMapping("/login/{type}")
 	public ResponseEntity<String> loginUser(@RequestBody @Valid UserDTO loginInfo, @PathVariable String type) {
-		String s = "Login Sucessfull";
-				loginService.login(loginInfo, type);
-		return new ResponseEntity<String>(s,HttpStatus.OK);
+		if(type=="Customer" || type=="Owner"){
+			String s = loginService.login(loginInfo, type);
+			return new ResponseEntity<String>(s,HttpStatus.OK);
+		}
+		else {
+			throw new InvalidId("Invalid Uri");
+		}
 	}
 	
 	
