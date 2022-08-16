@@ -29,8 +29,6 @@ public class FoodCartServiceImpl implements FoodCartService{
 		for(Item i:items) {
 			iDao.save(i);
 		}
-		cDao.save(cart.getCustomer());
-		
 		foodDao.save(cart);
 		return cart;
 	}
