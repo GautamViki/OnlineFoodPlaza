@@ -2,9 +2,15 @@ package com.masai.service;
 
 import org.springframework.stereotype.Service;
 
+import com.masai.entity.User;
+import com.masai.entity.UserDTO;
+
 @Service
 public interface LoginService {
-//    public Login signIn(Login login);
-//
-//    public Login signOut(Login login);
+	
+	public String login(UserDTO custDTO, String UserType);
+	
+	public String logout();
+	
+	public User loginDetail();
 }
