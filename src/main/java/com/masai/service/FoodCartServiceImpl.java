@@ -24,28 +24,28 @@ public class FoodCartServiceImpl implements FoodCartService{
 	
 	@Override
 	public Foodcart addItemToCart(Foodcart cart) {
-//		cDao.save(cart.getCustomer());
 		
 		List<Item> items=cart.getItemList();
 		for(Item i:items) {
 			iDao.save(i);
 		}
-		foodDao.save(cart);
-		return null;
-	}
-
-	@Override
-	public String removeItem(Integer cartId, Integer itemId) {
-		Optional<Foodcart> fCart=foodDao.findById(cartId);
-		Foodcart foodCart=fCart.get();
+		cDao.save(cart.getCustomer());
 		
-		return null;
+		foodDao.save(cart);
+		return cart;
 	}
 
 	@Override
-	public String clearCart(Foodcart cart) {
-		// TODO Auto-generated method stub
-		return null;
+	public String removeItem(Integer cartId) {
+		Optional<Foodcart> fCart=foodDao.findById(cartId);
+		foodDao.deleteById(cartId);
+		return "Removed";
+	}
+
+	@Override
+	public String clearCart() {
+		foodDao.deleteAll();
+		return "Cart is empty";
 	}
 
 

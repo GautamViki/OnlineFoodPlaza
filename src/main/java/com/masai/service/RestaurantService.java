@@ -13,6 +13,6 @@ public interface RestaurantService {
 	public Restaurant updateRestaurant(Integer id,Restaurant res);
 	public String removeRestaurant(Integer id);
 	public Restaurant viewRestaurant (Integer id);
-//	public Restaurant viewBearByRestaurant (List<Restaurant> location);
+	public List<Restaurant> viewRestaurant ( );
 	public List<Restaurant> viewRestaurantByItemName (String name);
 }
