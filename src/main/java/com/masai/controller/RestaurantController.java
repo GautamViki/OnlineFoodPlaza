@@ -5,6 +5,7 @@ import java.util.List;
 import com.masai.exception.InvalidId;
 import com.masai.exception.NullValueException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,17 +33,17 @@ public class RestaurantController {
 	public Restaurant viewRestaurant(@PathVariable("id") Integer id) {
 		if(id==null){
 			throw new InvalidId("Invalid Uri");
-		}else {
-			Restaurant restaurant=rService.viewRestaurant(id);
-			if (restaurant==null){
-				throw  new NullValueException("Order not found");
-			}
-			return restaurant;
 		}
+		Restaurant restaurant=rService.viewRestaurant(id);
+		if (restaurant==null){
+			throw  new NullValueException("Order not found");
+		}
+		return restaurant;
+		
 
 	}
 	
-	@GetMapping("/{name}/")
+	@GetMapping("/rest/{name}")
 	public List<Restaurant> viewAllRestautantHandler(@PathVariable("name") String name){
 		if(name==null){
 			throw new InvalidId("Invalid Uri");
@@ -62,5 +63,16 @@ public class RestaurantController {
 		} else {
 			return rService.updateRestaurant(id, restaurant);
 		}
+	}
+	
+	@GetMapping("")
+	public List<Restaurant> viewAllRestaurantHandler(){
+		return rService.viewRestaurant();
+	}
+	
+	@DeleteMapping("{id}")
+	public String deleteRestaurantHandler(@PathVariable("id") Integer id) {
+		rService.removeRestaurant(id);
+		return "Restaurant deleted";
 	}
 }
