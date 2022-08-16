@@ -18,6 +18,5 @@ public class Customer extends User{
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn (name = "FoodcartId")
 	private Foodcart foodCart;
-	
 
 }

@@ -1,9 +1,9 @@
 package com.masai.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -36,6 +36,20 @@ public class Address {
 	@Size(min = 6, max = 6, message = "Invalid Pin code")
 	@Pattern(regexp = "[0-9]{6}", message = "Only Valid for 6 digit indian pin code")
 	private String pincode;
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("addresses")
+	@JsonIgnore
+	private User user;
+
+//	public User getUser() {
+//		return user;
+//	}
+
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+
 	public Address() {
 		
 	}

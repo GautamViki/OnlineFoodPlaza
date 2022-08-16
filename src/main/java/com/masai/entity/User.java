@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -32,7 +33,8 @@ public abstract class User {
 	private Integer age;
 	private String gender;
 	private String mobileNumber;
+	@JsonIgnoreProperties("user")
 	@OneToMany(cascade = CascadeType.ALL)
-	List<Address> address=new ArrayList<>();
+	private List<Address> address;
 	private String email;
 }

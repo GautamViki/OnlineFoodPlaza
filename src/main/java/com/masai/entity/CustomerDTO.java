@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 public class CustomerDTO {
 
-	@Pattern(regexp="(0/91)?[6-9][0-9]{9}", message = "MobileNumber must be 10 Intergers.")
+	@Pattern(regexp="(0/91)?[6-9][0-9]{9}", message = "MobileNumber must be 10 Integers.")
 	private String mobileNumber;
 	
 
