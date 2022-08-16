@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.masai.entity.Customer;
 import com.masai.entity.Login;
 import com.masai.entity.LoginStatus;
+import com.masai.entity.Owner;
 import com.masai.entity.User;
 import com.masai.entity.UserDTO;
 import com.masai.repository.LoginDao;
@@ -17,6 +18,8 @@ public class LoginServiceImpl implements LoginService {
 	private LoginDao loginDao;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private OwnerService ownerservice;
 	@Override
 	public String login(UserDTO custDTO, String UserType)  {
 		if(UserType.equalsIgnoreCase("Customer")) {
@@ -41,12 +44,9 @@ public class LoginServiceImpl implements LoginService {
 				System.out.println("Insert Valid User and Password");
 //				throw new Exception();
 			}
-		}
+		}return null;
 		
-		else if(UserType.equalsIgnoreCase("Owner")) {
-			System.out.println("xyz");
-		}
-		return null;
+		
 	}
 
 	@Override
@@ -65,6 +65,34 @@ public class LoginServiceImpl implements LoginService {
 	public User loginDetail() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String login_owner(UserDTO OwnerDTO, String UserType) {
+		if(UserType.equalsIgnoreCase("Owner")) {
+			List<Login> loginList = loginDao.findAll();
+			if(loginList.size()>0) {
+				for(Login L: loginList) {
+					if(L.getStatus()== LoginStatus.LogedIn) {
+						System.out.println("Already Logged In");
+					}
+				}
+			}
+			Owner owner = ownerservice.findByNameAndPassword(OwnerDTO.getUserName(), OwnerDTO.getUserPwd());
+			if(owner != null) {
+				Login newLogin = new Login();
+				newLogin.setApiKey(UUID.randomUUID().toString().replaceAll("-", "").substring(0,10));
+				newLogin.setStatus(LoginStatus.LogedIn);
+				
+				newLogin.setUser(owner);
+				loginDao.save(newLogin);
+				return "You are successfully login";
+			}else {
+				System.out.println("Insert Valid User and Password");
+//				throw new Exception();
+			}
+		}return null;
+		
 	}
 
 }

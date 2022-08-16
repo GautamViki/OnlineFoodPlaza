@@ -23,7 +23,8 @@ public class LoginController {
 	
 	@PostMapping("/login/{type}")
 	public ResponseEntity<String> loginUser(@RequestBody @Valid UserDTO loginInfo, @PathVariable String type) {
-		String s = loginService.login(loginInfo, type);
+		String s = "Login Sucessfull";
+				loginService.login(loginInfo, type);
 		return new ResponseEntity<String>(s,HttpStatus.OK);
 	}
 	

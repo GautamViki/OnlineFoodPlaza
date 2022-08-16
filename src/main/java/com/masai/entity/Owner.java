@@ -22,23 +22,23 @@ import lombok.NoArgsConstructor;
 @Table(name = "owner")
 public class Owner extends User{
 	
-	@JsonIgnoreProperties("owner")
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Restaurant> restaurants = new ArrayList<>();
-	
-	@JsonIgnoreProperties("login")
-	@OneToOne(cascade = CascadeType.ALL)
-	private User cust;	
-	
-	@JsonIgnoreProperties("user")
-	@OneToOne(cascade = CascadeType.ALL)
-	private Login login;
-
-
-	public LoginStatus getStatus() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@JsonIgnoreProperties("owner")
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private List<Restaurant> restaurants = new ArrayList<>();
+//	
+//	@JsonIgnoreProperties("login")
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private User cust;	
+//	
+//	@JsonIgnoreProperties("user")
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Login login;
+//
+//
+//	public LoginStatus getStatus() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 
 }

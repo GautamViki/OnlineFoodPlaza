@@ -10,6 +10,8 @@ public interface LoginService {
 	
 	public String login(UserDTO custDTO, String UserType);
 	
+	public String login_owner(UserDTO OwnerDTO, String UserType);
+	
 	public String logout();
 	
 	public User loginDetail();

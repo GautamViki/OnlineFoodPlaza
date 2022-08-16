@@ -24,7 +24,7 @@ public abstract class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer customerId;
+	private Integer Id;
 	
 	private UserType usertype;
 	@NotNull
