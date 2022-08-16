@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer addCustomer(Customer customer) {
-        List<Address>addresses= (List<Address>) customer.getAddress();
+        List<Address>addresses=customer.getAddress();
         return customerDao.save(customer);
     }
 
