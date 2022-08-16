@@ -15,5 +15,5 @@ public interface OwnerService {
 		
 		public Owner findByNameAndPassword(String userName, String password);
 		
-	
+		
 }

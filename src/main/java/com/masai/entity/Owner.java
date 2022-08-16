@@ -28,12 +28,7 @@ public class Owner extends User{
 	
 	@JsonIgnoreProperties("login")
 	@OneToOne(cascade = CascadeType.ALL)
-	private User cust;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("owner")
-	private List<Item> items = new ArrayList<>();
-	
+	private User cust;	
 	
 	@JsonIgnoreProperties("user")
 	@OneToOne(cascade = CascadeType.ALL)
