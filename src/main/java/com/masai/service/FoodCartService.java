@@ -10,7 +10,7 @@ public interface FoodCartService {
     public Foodcart addItemToCart(Foodcart cart);
 //    public FoodCart inceraseQuantity(FoodCart cart, Item item, int quantity);
 //    public FoodCart reduceQuantity(FoodCart cart, Item item, int quantity);
-    public String removeItem(Integer cartId, Integer itemId);
-    public String clearCart(Foodcart cart);
+    public String removeItem(Integer cartId);
+    public String clearCart();
     
 }

@@ -22,18 +22,19 @@ public class ItemServiceImpl implements ItemService{
 	@Autowired
 	private RestaurantDao rDao;
 	
+	@Autowired
 	private ItemDao iDao;
 
 	@Override
 	public Item addItem(Item item) {
 		
-//		cDao.save(item.getCat());
+		
 		List<Restaurant> res=item.getRestaurant();
 		for(Restaurant r:res) {
-			r.getItems().add(item);
+//			r.getItems().add(item);
 			rDao.save(r);
 		}
-		
+		cDao.save(item.getCat());
 		return iDao.save(item);
 	}
 

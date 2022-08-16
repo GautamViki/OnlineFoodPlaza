@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.entity.Address;
 import com.masai.entity.Item;
 import com.masai.entity.Restaurant;
 import com.masai.repository.AddressDao;
@@ -27,13 +28,13 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 	@Override
 	public Restaurant addRestaurant(Restaurant res) {
-//		aDao.save(res.getAddress());
+		
 		List<Item> item=res.getItems();
 		for(Item i:item) {
-			i.getRestaurant().add(res);
+//			i.getRestaurant().add(res);
 			iDao.save(i);
 		}
-		
+		aDao.save(res.getAddress());
 		return rDao.save(res);
 		
 	}
@@ -72,6 +73,15 @@ public class RestaurantServiceImpl implements RestaurantService{
 	public String removeRestaurant(Integer id) {
 		rDao.deleteById(id);
 		return "Deleted";
+	}
+
+
+	@Override
+	public List<Restaurant> viewRestaurant() {
+		List<Restaurant> allrests=rDao.findAll();
+		
+		
+		return allrests;
 	}
 
 }
