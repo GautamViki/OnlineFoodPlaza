@@ -33,7 +33,7 @@ public class Restaurant {
      private Address address;
      
      @ManyToMany(cascade = CascadeType.ALL)
-     @JsonIgnore
+//     @JsonIgnore
      private List<Item> items;
 
 

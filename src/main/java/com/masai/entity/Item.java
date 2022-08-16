@@ -36,7 +36,7 @@ public class Item {
   private Category cat;
   
   @ManyToMany(cascade = CascadeType.ALL, mappedBy = "items")
-  @JsonIgnore
+//  @JsonIgnore
   private List<Restaurant> restaurant;  
   
 }
