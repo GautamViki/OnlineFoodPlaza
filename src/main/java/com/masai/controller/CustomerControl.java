@@ -14,14 +14,13 @@ public class CustomerControl {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/{id}")
-    public Customer viewCustomerHandler(@PathVariable Integer id) {
-        return customerService.viewCustomer(id);
-    }
-
     @PostMapping("/")
     public Customer saveCustomerHandler(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
+    }
+    @GetMapping("/{id}")
+    public Customer viewCustomerHandler(@PathVariable Integer id) {
+        return customerService.viewCustomer(id);
     }
 
     @PutMapping("/{id}/{mobile}/{email}")

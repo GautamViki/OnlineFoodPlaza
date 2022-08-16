@@ -3,6 +3,8 @@ package com.masai.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.masai.entity.Address;
+import com.masai.repository.AddressDao;
 import com.masai.repository.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
+    @Autowired
+    private AddressDao addressDao;
+
     @Override
     public Customer addCustomer(Customer customer) {
-        Customer customer1 = customerDao.save(customer);
-        return customer1;
+        List<Address>addresses=customer.getAddress();
+        return customerDao.save(customer);
     }
 
     @Override
@@ -27,8 +32,8 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = opt.get();
         return customer;
     }
-
-    @Override
+    //
+//    @Override
     public Customer updateCustomer(Integer id, String mobile, String email) {
         Optional<Customer> opt = customerDao.findById(id);
         Customer customer1 = opt.get();
@@ -44,7 +49,6 @@ public class CustomerServiceImpl implements CustomerService {
         customerDao.delete(customer);
         return customer;
     }
-
 
     @Override
     public List<Customer> viewAllCustomers() {

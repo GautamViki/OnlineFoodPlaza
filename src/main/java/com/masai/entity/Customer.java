@@ -1,11 +1,8 @@
 package com.masai.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -18,8 +15,8 @@ public class Customer {
 	private Integer age;
 	private String gender;
 	private String mobileNumber;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	@OneToMany(cascade = CascadeType.ALL)
+	List<Address> address=new ArrayList<>();
 	private String email;
 //	/**
 //	 * @param customerId
@@ -82,12 +79,15 @@ public class Customer {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public Address getAddress() {
+
+	public List<Address> getAddress() {
 		return address;
 	}
-	public void setAddress(Address address) {
+
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
+
 	public String getEmail() {
 		return email;
 	}
