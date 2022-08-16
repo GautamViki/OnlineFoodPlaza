@@ -1,5 +1,5 @@
 package com.masai.entity;
-
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,20 +16,26 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bill {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer billId;
-	@NotNull
-	private String billDate;
-	@NotNull
-	private Integer totalItem;
-	@NotNull
-	private Double totalCost;
-	@OneToOne(cascade = CascadeType.ALL)
-	private OrderDetail orderdetail;
+@Data
+public class Login {
+	
+
 		
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private Integer loginId;
+		
+		private String apiKey;
+		
+		private LoginStatus status;
+		
+		@JsonIgnoreProperties("login")
+		@OneToOne(cascade = CascadeType.ALL)
+		private User user;
+
+		
+		
+	
 }
