@@ -15,7 +15,7 @@ public interface BillService {
 
     public Bill viewBill(Integer id);
 
-    public List<Bill> viewBill1(Integer custId);
+    public List<Bill> viewBill1(Integer orderId);
 
     public Double calculateTotalCost(Bill bill);
 }
