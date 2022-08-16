@@ -42,7 +42,7 @@ public class RestaurantController {
 
 	}
 	
-	@GetMapping("/{name}")
+	@GetMapping("/{name}/")
 	public List<Restaurant> viewAllRestautantHandler(@PathVariable("name") String name){
 		if(name==null){
 			throw new InvalidId("Invalid Uri");
