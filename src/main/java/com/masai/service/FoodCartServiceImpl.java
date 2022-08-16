@@ -24,14 +24,14 @@ public class FoodCartServiceImpl implements FoodCartService{
 	
 	@Override
 	public Foodcart addItemToCart(Foodcart cart) {
-		cDao.save(cart.getCustomer());
+//		cDao.save(cart.getCustomer());
 		
 		List<Item> items=cart.getItemList();
 		for(Item i:items) {
 			iDao.save(i);
 		}
 		foodDao.save(cart);
-		return cart;
+		return null;
 	}
 
 	@Override
