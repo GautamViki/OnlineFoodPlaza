@@ -4,18 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer addressId;
+	@NotNull(message = "building shouldn't be empty")
 	private String buildingName;
+	@NotNull(message = "streetNo shouldn't be empty")
 	private String streetNo;
+	@NotNull(message = "area shouldn't be empty")
 	private String area;
+	@NotNull(message = "city shouldn't be empty")
 	private String city;
+	@NotNull(message = "state shouldn't be empty")
 	private String state;
+	@NotNull(message = "country shouldn't be empty")
 	private String country;
+	@NotNull
+	@Size(min=6,max=6,message="Invalid Pincode")
+	@Pattern(regexp="[0-9]{6}", message = "Only Valid for 6 digit indian pincode")
 	private String pincode;
 	
 
