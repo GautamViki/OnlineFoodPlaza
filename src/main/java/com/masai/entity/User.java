@@ -29,10 +29,10 @@ public abstract class User {
 	private UserType usertype;
 	@NotNull
 	@Pattern(regexp="[a-z]{6,12}",
-	message = "Username must be between 5 to 12 characters. Must only contain lowercase characters.")
+	message = "Username must be between 6 to 12 characters. Must only contain lowercase characters.")
 	private String userName;
 	@NotNull
-	@Pattern(regexp="[a-zA-Z0-9]{6,12}",message="Password must contain between 4 to 12 characters."
+	@Pattern(regexp="[a-zA-Z0-9]{6,12}",message="Password must contain between 6 to 12 characters."
 			+ " Must be alphanumeric with both Upper and lowercase characters.")
 	private String userPwd;
 	@NotNull
