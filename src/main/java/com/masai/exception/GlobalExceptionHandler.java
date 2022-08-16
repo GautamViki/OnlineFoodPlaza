@@ -1,5 +1,8 @@
 package com.masai.exception;
 
-public class GlobalExceptionHandler {
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	
 }

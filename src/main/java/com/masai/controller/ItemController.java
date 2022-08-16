@@ -1,5 +1,7 @@
 package com.masai.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,7 @@ public class ItemController {
 	private ItemService iService;
 
 	
-	@PostMapping("/")
+	@PostMapping("")
 	public Item addItemHandler(@RequestBody Item item) {
 		return iService.addItem(item);
 	}
@@ -30,6 +32,9 @@ public class ItemController {
 		return iService.viewItem(id);
 	}
 	
-	
+	@GetMapping("")
+	public List<Item> viewAllItemHandler(){
+		return iService.viewAllItems();
+	}
 	
 }

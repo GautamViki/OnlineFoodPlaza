@@ -1,6 +1,7 @@
 package com.masai.controller;
 
 import com.masai.entity.Customer;
+import com.masai.entity.UserType;
 import com.masai.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,13 @@ public class CustomerControl {
     @Autowired
     private CustomerService customerService;
 
+    @PostMapping("/")
+    public Customer saveCustomerHandler(@RequestBody Customer customer) throws Exception {
+        return customerService.addCustomer(customer,UserType.Customer);
+    }
     @GetMapping("/{id}")
     public Customer viewCustomerHandler(@PathVariable Integer id) {
         return customerService.viewCustomer(id);
-    }
-
-    @PostMapping("/")
-    public Customer saveCustomerHandler(@RequestBody Customer customer) {
-        return customerService.addCustomer(customer);
     }
 
     @PutMapping("/{id}/{mobile}/{email}")
