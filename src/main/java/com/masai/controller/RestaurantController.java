@@ -24,17 +24,18 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService rService;
 	
-	@PostMapping("")
+	@PostMapping("/")
 	public Restaurant addRestaurantHandler(@RequestBody Restaurant restaurant) {
 		return rService.addRestaurant(restaurant);
 	}
 	
 	@GetMapping("/{id}")
-	public Restaurant viewRestaurant(@PathVariable("id") Integer id) {
+	public Restaurant viewRestaurantById(@PathVariable("id") Integer id) {
+		Restaurant restaurant=rService.viewRestaurant(id);
 		if(id==null){
 			throw new InvalidId("Invalid Uri");
 		}
-		Restaurant restaurant=rService.viewRestaurant(id);
+		
 		if (restaurant==null){
 			throw  new NullValueException("Order not found");
 		}
@@ -44,11 +45,12 @@ public class RestaurantController {
 	}
 	
 	@GetMapping("/rest/{name}")
-	public List<Restaurant> viewAllRestautantHandler(@PathVariable("name") String name){
+	public List<Restaurant> viewAllRestautantByNameHandler(@PathVariable("name") String name){
+		List<Restaurant>restaurant= rService.viewRestaurantByName(name);
 		if(name==null){
 			throw new InvalidId("Invalid Uri");
 		}else {
-			List<Restaurant>restaurant= rService.viewRestaurantByItemName(name);
+			
 			if (restaurant==null){
 				throw  new NullValueException("Order not found");
 			}
@@ -65,9 +67,10 @@ public class RestaurantController {
 		}
 	}
 	
-	@GetMapping("")
+	@GetMapping("/")
 	public List<Restaurant> viewAllRestaurantHandler(){
-		return rService.viewRestaurant();
+		
+		return rService.viewAllRestaurant();
 	}
 	
 	@DeleteMapping("{id}")

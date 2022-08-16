@@ -48,7 +48,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 
 	@Override
-	public List<Restaurant> viewRestaurantByItemName(String name) {
+	public List<Restaurant> viewRestaurantByName(String name) {
 		List<Restaurant> allRests=rDao.findAll();
 		List<Restaurant> restsByName= new ArrayList<>();
 		for(Restaurant res:allRests) {
@@ -77,7 +77,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 
 	@Override
-	public List<Restaurant> viewRestaurant() {
+	public List<Restaurant> viewAllRestaurant() {
 		List<Restaurant> allrests=rDao.findAll();
 		
 		
