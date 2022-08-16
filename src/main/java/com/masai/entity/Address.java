@@ -4,40 +4,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer addressId;
-	private String buildingName;
-	private String streetNo;
-	private String area;
-	private String city;
-	private String state;
-	private String country;
-	private String pincode;
-	
 
+	@NotNull(message = "building should not be null")
+	private String buildingName;
+
+	@NotNull(message = "street should not be null")
+	private String streetNo;
+
+	@NotNull(message = "area should not be null")
+	private String area;
+
+	@NotNull(message = "city should not be null")
+	private String city;
+
+	@NotNull(message = "state should not be null")
+	private String state;
+
+	@NotNull(message = "country should not be null")
+	private String country;
+
+	@NotNull
+	@Size(min = 6, max = 6, message = "Invalid Pin code")
+	@Pattern(regexp = "[0-9]{6}", message = "Only Valid for 6 digit indian pin code")
+	private String pincode;
 	public Address() {
 		
 	}
-
-
-//	public Address(Integer addressId, String buildingName, String streetNo, String area, String city, String state,
-//			String country, String pincode) {
-//		this.addressId = addressId;
-//		this.buildingName = buildingName;
-//		this.streetNo = streetNo;
-//		this.area = area;
-//		this.city = city;
-//		this.state = state;
-//		this.country = country;
-//		this.pincode = pincode;
-//	}
-
-
-	
 
 	public Integer getAddressId() {
 		return addressId;
@@ -125,7 +126,4 @@ public class Address {
 				+ ", area=" + area + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode="
 				+ pincode + "]";
 	}
-	
-	
-	
 }

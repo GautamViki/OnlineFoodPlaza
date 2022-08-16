@@ -24,13 +24,12 @@ private CustomerDao customerDao;
     }
 
     @Override
-    public List<Address> updateAddress(Integer id, Integer idx, String city, String state) {
+    public List<Address> updateAddress(Integer id, Integer idx, Address address) {
         Optional<Customer> opt = customerDao.findById(id);
         Customer customer = opt.get();
         List<Address> addresses = customer.getAddress();
-        Address address = addresses.get(idx);
-        address.setCity(city);
-        address.setState(state);
+//        Address address1 = addresses.get(idx);
+        addresses.set(idx, address);
         customerDao.save(customer);
         return addresses;
     }

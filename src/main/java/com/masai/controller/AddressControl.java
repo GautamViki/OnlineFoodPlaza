@@ -13,9 +13,9 @@ public class AddressControl {
     @Autowired
     private AddressService addressService;
 
-    @PutMapping("/{id}/{idx}/{city}/{state}")
+    @PutMapping("/{id}/{idx}")
     public List<Address> updateAddressByIdWithIndex(@PathVariable Integer id, @PathVariable Integer idx,
-                                                    @PathVariable String city, @PathVariable String state) {
-        return addressService.updateAddress(id, idx, city, state);
+                                                    @RequestBody Address address) {
+        return addressService.updateAddress(id, idx, address);
     }
 }

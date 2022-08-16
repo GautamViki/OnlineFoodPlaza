@@ -8,6 +8,5 @@ import java.util.List;
 @Service
 public interface AddressService {
     public List<Address> viewAddress(Integer id);
-    public List<Address> updateAddress(Integer id, Integer idx, String city, String state);
-
+    public List<Address> updateAddress(Integer id, Integer idx, Address address);
 }
