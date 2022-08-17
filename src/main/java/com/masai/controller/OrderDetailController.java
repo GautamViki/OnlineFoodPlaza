@@ -3,6 +3,9 @@ package com.masai.controller;
 
 import com.masai.exception.InvalidId;
 import com.masai.exception.NullValueException;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +25,9 @@ public class OrderDetailController {
 	@Autowired
 	private OrderDetailsService orderService;
 	
-	@PutMapping("/{id}/{order}")
+	@PutMapping("/{id}")
 	public OrderDetail updateOrderHandler(@PathVariable Integer id,
-								  @PathVariable OrderDetail order) {
+								  @RequestBody OrderDetail order) {
 		if(id==null){
 			throw new InvalidId("Invalid Uri");
 		}else {
@@ -69,4 +72,20 @@ public class OrderDetailController {
 			}
 
 	    }
+	    
+	    
+	    @GetMapping("/all")
+	    public List<OrderDetail> viewAllOrderHandler() {
+			
+				List<OrderDetail> order1=orderService.viewAllOrder();
+				if (order1==null){
+					throw  new NullValueException("Order not found");
+				}
+				return order1;
+			
+
+	    }
+	    
+	    
+	    
 }

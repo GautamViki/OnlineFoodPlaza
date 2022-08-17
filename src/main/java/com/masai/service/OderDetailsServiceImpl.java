@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class OderDetailsServiceImpl implements OrderDetailsService {
 	public OrderDetail viewOrder(Integer orderId) {
 		Optional<OrderDetail> opt = orderDao.findById(orderId);
 		return opt.get();
+	}
+
+	@Override
+	public List<OrderDetail> viewAllOrder() {
+		List<OrderDetail> allOrders=orderDao.findAll();
+		return null;
 	}
 
 }

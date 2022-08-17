@@ -26,7 +26,7 @@ public class ItemController {
 	private ItemService iService;
 
 	
-	@PostMapping("")
+	@PostMapping("/")
 	public Item addItemHandler(@RequestBody Item item) {
 		Item item1= iService.addItem(item);
 		if(item1==null){
@@ -66,7 +66,7 @@ public class ItemController {
 		return iService.updateItem(id, item);
 	}
 	
-	@GetMapping("")
+	@GetMapping("/all")
 	public List<Item> viewAllItemHandler(){
 		List<Item>items=iService.viewAllItems();
 		if(items.size()==0){
