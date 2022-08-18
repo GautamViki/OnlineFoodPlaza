@@ -9,7 +9,7 @@ import com.masai.entity.Item;
 
 @Service
 public interface ItemService {
-     public Item addItem(Item item);
+     public Item addItem(Integer resid ,Item item);
      public Item updateItem(Integer id, Item item);
      public Item viewItem(Integer id);
      public String removeItem(Integer id);

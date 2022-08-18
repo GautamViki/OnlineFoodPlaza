@@ -26,9 +26,9 @@ public class ItemController {
 	private ItemService iService;
 
 	
-	@PostMapping("/")
-	public Item addItemHandler(@RequestBody Item item) {
-		Item item1= iService.addItem(item);
+	@PostMapping("/{resId}")
+	public Item addItemHandler(@PathVariable("resId") Integer id, @RequestBody Item item) {
+		Item item1= iService.addItem(id, item);
 		if(item1==null){
 				throw new NullValueException("Value not found");
 		}else {

@@ -1,5 +1,6 @@
 package com.masai.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,10 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,9 +35,9 @@ public class Restaurant {
      @OneToOne(cascade = CascadeType.ALL)
      private Address address;
      
-     @ManyToMany(cascade = CascadeType.ALL)
-//     @JsonIgnore
-     private List<Item> items;
+     @OneToMany(cascade = CascadeType.ALL)
+     @JsonIgnoreProperties("items")
+     private List<Item> items=new ArrayList<>();
 
 
      

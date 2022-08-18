@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entity.Item;
 import com.masai.entity.Restaurant;
+import com.masai.exception.InvalidId;
 import com.masai.repository.CategoryDao;
 import com.masai.repository.ItemDao;
 import com.masai.repository.RestaurantDao;
@@ -26,16 +27,19 @@ public class ItemServiceImpl implements ItemService{
 	private ItemDao iDao;
 
 	@Override
-	public Item addItem(Item item) {
+	public Item addItem(Integer resid,Item item) {
 		
-		
-		List<Restaurant> res=item.getRestaurant();
-		for(Restaurant r:res) {
-//			r.getItems().add(item);
-			rDao.save(r);
+		Optional<Restaurant> opt=rDao.findById(resid);
+		if(opt.isPresent()) {
+			opt.get().getItems().add(item);
+			rDao.save(opt.get());
+			return item;
 		}
-		cDao.save(item.getCat());
-		return iDao.save(item);
+		else {
+			throw new InvalidId("Restaurant does not exist");
+		}
+//		cDao.save(item.getCat());
+//		return iDao.save(item);
 	}
 
 	@Override

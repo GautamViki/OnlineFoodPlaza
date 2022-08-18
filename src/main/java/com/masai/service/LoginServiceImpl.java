@@ -10,6 +10,7 @@ import com.masai.entity.LoginStatus;
 import com.masai.entity.Owner;
 import com.masai.entity.User;
 import com.masai.entity.UserDTO;
+import com.masai.exception.GlobalExceptionHandler;
 import com.masai.exception.InvalidId;
 import com.masai.repository.LoginDao;
 
@@ -80,19 +81,37 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String logout() {
 		List<Login> loginList = loginDao.findAll();
-		for(Login l : loginList) {
-			
-			l.setStatus(LoginStatus.LogedOut);
-		}
-		loginDao.saveAll(loginList);
-		return "Successfully Logout";
 		
+		if(loginList.size()>0) {
+			boolean flag=false;
+			for(Login l : loginList) {
+				if(l.getStatus()==LoginStatus.LogedIn) {
+					flag=true;
+					l.setStatus(LoginStatus.LogedOut);
+				}
+				
+			}
+			if(flag) {
+				loginDao.saveAll(loginList);
+				return "Successfully Logout";
+			}
+			else {
+				return "You have to login first...";
+			}
+		}
+		return "You have to login first...";
 	}
 
 	@Override
-	public User loginDetail() {
-		// TODO Auto-generated method stub
-		return null;
+	public User loginDetail() throws Exception {
+		List<Login> loginList = loginDao.findAll();
+		for(Login l : loginList) {
+			if(l.getStatus() == LoginStatus.LogedIn) {
+				return l.getUser();
+			}
+		}
+		throw new Exception("You have to login first...");
+		
 	}
 
 	@Override

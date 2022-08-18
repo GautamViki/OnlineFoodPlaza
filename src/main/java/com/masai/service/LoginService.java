@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entity.User;
 import com.masai.entity.UserDTO;
+import com.masai.exception.GlobalExceptionHandler;
 
 @Service
 public interface LoginService {
@@ -12,7 +13,7 @@ public interface LoginService {
 	
 	public String login_owner(UserDTO OwnerDTO, String UserType);
 	
-	public String logout();
+	public String logout() ;
 	
-	public User loginDetail();
+	public User loginDetail() throws Exception;
 }
