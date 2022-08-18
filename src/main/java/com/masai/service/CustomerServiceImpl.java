@@ -77,9 +77,7 @@ public class CustomerServiceImpl implements CustomerService {
         Optional<Customer> opt = customerDao.findById(id);
         if(opt.isPresent()){
             Customer customer = opt.get();
-            Customer deletedCust=customer;
-            customerDao.delete(customer);
-            return deletedCust;
+
         }
         else {
             throw new FoodPlazaException("Customer not found");
