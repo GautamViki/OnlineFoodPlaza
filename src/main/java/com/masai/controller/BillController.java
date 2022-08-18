@@ -2,6 +2,9 @@ package com.masai.controller;
 
 import com.masai.exception.InvalidId;
 import com.masai.exception.NullValueException;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,6 +76,13 @@ public class BillController {
 				return bill;
 			}
 
+	    }
+	    
+	    @GetMapping("/allBill")
+	    public List<Bill> viewAllBillHandler(){
+			return billService.viewAllBill();
+	    	
+	    	
 	    }
 	  
 }

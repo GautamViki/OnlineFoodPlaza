@@ -54,10 +54,10 @@ public class BillServiceImpl implements BillService {
 	}
 
 	@Override
-	public List<Bill> viewBill1(Integer custId) {
-		Optional<Customer> opt = cdao.findById(custId);
+	public List<Bill> viewAllBill() {
+		List<Bill> bill = billdao.findAll();
 	
-		return null;
+		return bill;
 	}
 
 

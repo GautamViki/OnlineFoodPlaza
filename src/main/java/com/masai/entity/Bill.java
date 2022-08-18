@@ -1,6 +1,8 @@
 package com.masai.entity;
 
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +24,8 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer billId;
-	@NotNull
-	private String billDate;
+	
+	private LocalDateTime billDate=LocalDateTime.now();
 	@NotNull
 	private Integer totalItem;
 	@NotNull

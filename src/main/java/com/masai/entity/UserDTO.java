@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDTO {
 	@NotNull
-	@Pattern(regexp="[a-z]{6,12}",
+	@Pattern(regexp="[A-Za-z]{6,12}",
 	message = "Username must be between 6 to 12 characters. Must only contain lowercase characters.")
 	private String userName;
 	@Pattern(regexp="[a-zA-Z0-9]{6,12}",

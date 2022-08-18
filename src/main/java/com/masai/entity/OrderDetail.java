@@ -1,5 +1,7 @@
 package com.masai.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +20,8 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderId;
-	@NotNull
-	private String orderDate;
+	
+	private LocalDateTime orderDate=LocalDateTime.now();
 	@OneToOne(cascade = CascadeType.ALL)
 	private Foodcart cart;
 	private String orderStatus;
