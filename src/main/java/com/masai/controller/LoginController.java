@@ -24,7 +24,7 @@ public class LoginController {
 	
 	@PostMapping("/login/{type}")
 	public ResponseEntity<String> loginUser(@RequestBody @Valid UserDTO loginInfo, @PathVariable String type) {
-		if(type=="Customer" || type=="Owner"){
+		if(type.equalsIgnoreCase("Customer") || type.equalsIgnoreCase("Owner")){
 			String s = loginService.login(loginInfo, type);
 			return new ResponseEntity<String>(s,HttpStatus.OK);
 		}
