@@ -1,9 +1,6 @@
 package com.masai.entity;
 
 import javax.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 
 

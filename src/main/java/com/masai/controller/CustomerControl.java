@@ -47,15 +47,7 @@ public class CustomerControl {
     }
 
     @DeleteMapping("/{id}")
-    public String removeCustomerHandler(@PathVariable Integer id) {
-        if(id==null){
-            throw new InvalidId("Invalid URI");
-        }else {
-            Customer customer = customerService.removeCustomer(id);
-            if(customer==null){
-                throw new NullValueException("Customer not found");
-            }
-            return "Deleted " + customer;
+
         }
     }
 
