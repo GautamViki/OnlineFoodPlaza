@@ -25,8 +25,7 @@ public class OderDetailsServiceImpl implements OrderDetailsService {
 	public OrderDetail updateOrder(Integer orderId, OrderDetail order) {
 		Optional<OrderDetail> opt = orderDao.findById(orderId);
 		order.setOrderId(orderId);
-		orderDao.save(order);
-		return order;
+		return orderDao.save(order);
 	}
 
 	@Override
