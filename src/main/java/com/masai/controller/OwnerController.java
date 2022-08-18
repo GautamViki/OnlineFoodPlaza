@@ -22,7 +22,8 @@ public class OwnerController {
 	
 	 @PostMapping("/")
 	    public Owner saveOwnerHandler(@RequestBody Owner owner) throws Exception {
-	        return ownerService.addOwner(owner,UserType.Owner);
+//	        return ownerService.addOwner(custDTO,UserType.Owner);
+		 return ownerService.addOwner(owner, UserType.Owner);
 	    }
 
 

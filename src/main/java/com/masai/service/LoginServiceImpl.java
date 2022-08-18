@@ -10,6 +10,7 @@ import com.masai.entity.LoginStatus;
 import com.masai.entity.Owner;
 import com.masai.entity.User;
 import com.masai.entity.UserDTO;
+import com.masai.exception.InvalidId;
 import com.masai.repository.LoginDao;
 
 @Service
@@ -27,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
 			if(loginList.size()>0) {
 				for(Login L: loginList) {
 					if(L.getStatus()== LoginStatus.LogedIn) {
-						System.out.println("Already Logged In");
+						throw new InvalidId("Already Logged In");
 					}
 				}
 			}
@@ -41,10 +42,37 @@ public class LoginServiceImpl implements LoginService {
 				loginDao.save(newLogin);
 				return "You are successfully login";
 			}else {
-				System.out.println("Insert Valid User and Password");
+				throw new InvalidId("Insert Valid User and Password");
 //				throw new Exception();
 			}
-		}return null;
+		}
+		else if(UserType.equalsIgnoreCase("Owner")) {
+			List<Login> loginList = loginDao.findAll();
+			if(loginList.size()>0) {
+				for(Login L: loginList) {
+					if(L.getStatus()== LoginStatus.LogedIn) {
+						throw new InvalidId("Already Logged In");
+					}
+				}
+			}
+			Owner owner = ownerservice.findByNameAndPassword(custDTO.getUserName(), custDTO.getUserPwd());
+			if(owner != null) {
+				Login newLogin = new Login();
+				newLogin.setApiKey(UUID.randomUUID().toString().replaceAll("-", "").substring(0,10));
+				newLogin.setStatus(LoginStatus.LogedIn);
+				
+				newLogin.setUser(owner);
+				loginDao.save(newLogin);
+				return "You are successfully login";
+			}else {
+				throw new InvalidId("Insert Valid User and Password");
+//				throw new Exception();
+			}
+		}
+		else {
+			return null;
+		}
+		
 		
 		
 	}
@@ -88,7 +116,7 @@ public class LoginServiceImpl implements LoginService {
 				loginDao.save(newLogin);
 				return "You are successfully login";
 			}else {
-				System.out.println("Insert Valid User and Password");
+				throw new InvalidId("Insert Valid User and Password");
 //				throw new Exception();
 			}
 		}return null;

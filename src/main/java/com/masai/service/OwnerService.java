@@ -9,7 +9,7 @@ import com.masai.entity.UserType;
 @Service
 public interface OwnerService {
 	
-		public Owner addOwner(Owner owner, UserType userType)throws Exception;
+		public Owner addOwner(Owner owner, UserType usertype) throws Exception;;
 		
 		public String removeOwner(Integer Id);
 		
