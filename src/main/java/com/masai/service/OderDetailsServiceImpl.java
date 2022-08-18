@@ -30,8 +30,9 @@ public class OderDetailsServiceImpl implements OrderDetailsService {
 
 	@Override
 	public OrderDetail addOrder(OrderDetail order) {
-		foodcartDao.save(order.getCart());
 		billdao.save(order.getBill());
+		foodcartDao.save(order.getCart());
+		
 		orderDao.save(order);
 		return order;
 	}
@@ -51,7 +52,7 @@ public class OderDetailsServiceImpl implements OrderDetailsService {
 	@Override
 	public List<OrderDetail> viewAllOrder() {
 		List<OrderDetail> allOrders=orderDao.findAll();
-		return null;
+		return allOrders;
 	}
 
 }

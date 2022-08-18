@@ -35,12 +35,12 @@ public class CustomerServiceImpl implements CustomerService {
                     throw new Exception();
                 }
             }
-            customer.setFoodCart(new Foodcart());
+//            customer.setFoodCart(new Foodcart());
             customer.setUsertype(usertype);
             return customerDao.save(customer);
         }
         else {
-            customer.setFoodCart(new Foodcart());
+//            customer.setFoodCart(new Foodcart());
             customer.setUsertype(usertype);
             return customerDao.save(customer);
         }

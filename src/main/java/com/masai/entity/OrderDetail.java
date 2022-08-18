@@ -24,6 +24,7 @@ public class OrderDetail {
 	private LocalDateTime orderDate=LocalDateTime.now();
 	@OneToOne(cascade = CascadeType.ALL)
 	private Foodcart cart;
+	
 	private String orderStatus;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bill bill;
