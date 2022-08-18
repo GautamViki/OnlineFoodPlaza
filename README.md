@@ -12,7 +12,7 @@
 - [Chandani Chandra](https://github.com/Chandani99)
 - [Anubhav Mishra](https://github.com/anubhav4968)
 - [Sakshi Gupta](https://github.com/sakshi611)
-- [Vikas Gautam](https://github.com/itsme-brijeshrai)
+- [Vikas Kumar Gautam](https://github.com/GautamViki)
 - [Gagan Patil](https://github.com/gaganpatil1995)
 
 # Tech Stack
