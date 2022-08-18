@@ -3,51 +3,46 @@ package com.masai.exception;
 import java.time.LocalDateTime;
 
 public class MyErrorDetails {
-    private LocalDateTime time;
-    private String msg;
-    private String details;
-    
+	private LocalDateTime timestamp;
+	private String message;
+	private String description;
+
 	public MyErrorDetails() {
-		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public MyErrorDetails(LocalDateTime time, String msg, String details) {
-		super();
-		this.time = time;
-		this.msg = msg;
-		this.details = details;
+	public MyErrorDetails(LocalDateTime timestamp, String message, String description) {
+		this.timestamp = timestamp;
+		this.message = message;
+		this.description = description;
 	}
 
-	public LocalDateTime getTime() {
-		return time;
+	public LocalDateTime getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTime(LocalDateTime time) {
-		this.time = time;
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
 	}
 
-	public String getMsg() {
-		return msg;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public String getDetails() {
-		return details;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDetails(String details) {
-		this.details = details;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return "MyErrorDetails [time=" + time + ", msg=" + msg + ", details=" + details + "]";
+		return "MyErrorDetails [timestamp=" + timestamp + ", message=" + message + ", description=" + description + "]";
 	}
-	
-	
-    
-    
 }
