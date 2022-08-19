@@ -14,7 +14,8 @@ public interface ItemService {
      public Item viewItem(Integer id);
      public String removeItem(Integer id);
      public List<Item> viewAllItems();
-//     public List<Item> viewAllItemsByRestaurent(Restaurant res);
+     public List<Item> viewAllItemsByCategory(String  catName);
+     public List<Item> viewItemsByRestaurent(String resName,String itemName);
      public List<Item> viewAllItemsByName(String name);
      
 }

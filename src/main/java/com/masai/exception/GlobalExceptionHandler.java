@@ -33,15 +33,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public ResponseEntity<MyErrorDetails> myNotFoundHandler(NoHandlerFoundException nfe, WebRequest req) {
-        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
+    @ExceptionHandler(InvalidId.class)
+    public ResponseEntity<MyErrorDetails> myNotFoundHandler(InvalidId ii, WebRequest req) {
+        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ii.getMessage(), req.getDescription(false));
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(MethodArgumentNotValidException me) {
-        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), "Validation Error", me.getBindingResult().getFieldError().getDefaultMessage());
+    @ExceptionHandler(NullValueException.class)
+    public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(NullValueException nve,WebRequest req) {
+        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), nve.getMessage(),req.getDescription(false));
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 }

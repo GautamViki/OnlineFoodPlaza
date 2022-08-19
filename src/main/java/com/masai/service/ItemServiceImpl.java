@@ -67,14 +67,8 @@ public class ItemServiceImpl implements ItemService{
 		List<Item> items=iDao.findAll();
 		return items;
 	}
-//
-//	@Override
-//	public List<Item> viewAllItemsByRestaurent(Restaurant res) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
+
+	@Override
 	public List<Item> viewAllItemsByName(String name) {
 		List<Item> items=iDao.findAll();
 		List<Item> item1=new ArrayList<>();
@@ -84,6 +78,38 @@ public class ItemServiceImpl implements ItemService{
 			}
 		}
 		return item1;
+	}
+
+	@Override
+	public List<Item> viewAllItemsByCategory(String catName) {
+		List<Item> allItems=iDao.findAll();
+		List<Item> itemByCat= new ArrayList<>();
+		for(Item item: allItems) {
+			if(item.getCat().getCategoryName().equalsIgnoreCase(catName)) {
+				itemByCat.add(item);
+			}
+		}
+		
+		
+		return itemByCat;
+	}
+
+	@Override
+	public List<Item> viewItemsByRestaurent(String resName,String itemName) {
+		List<Restaurant> allRests=rDao.findAll();
+		List<Item> itemsByRests= new ArrayList<>();
+		for(Restaurant res: allRests) {
+			if(res.getResName().equalsIgnoreCase(resName)) {
+				List<Item> i=res.getItems();
+				for(Item item2: i) {
+					if(item2.getItemName().equalsIgnoreCase(itemName)) {
+						itemsByRests.add(item2);
+					}
+				}
+				
+			}
+		}
+		return itemsByRests;
 	}
 
 }
