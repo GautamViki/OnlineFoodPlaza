@@ -7,6 +7,8 @@ import com.masai.exception.NullValueException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +28,7 @@ public class OrderDetailController {
 	private OrderDetailsService orderService;
 	
 	@PutMapping("/{id}")
-	public OrderDetail updateOrderHandler(@PathVariable Integer id,
+	public ResponseEntity<OrderDetail> updateOrderHandler(@PathVariable Integer id,
 								  @RequestBody OrderDetail order) {
 		if(id==null){
 			throw new InvalidId("Invalid Uri");
@@ -35,18 +37,18 @@ public class OrderDetailController {
 			if (order1==null){
 				throw  new NullValueException("Order not found");
 			}
-			return order1;
+			return new ResponseEntity<OrderDetail>(order1,HttpStatus.ACCEPTED);
 		}
 
 	}
 	
 	@PostMapping("/")
-	public OrderDetail saveOrderHandler(@RequestBody OrderDetail order) {
-		return orderService.addOrder(order);
+	public ResponseEntity<OrderDetail> saveOrderHandler(@RequestBody OrderDetail order) {
+		return new ResponseEntity<OrderDetail>(orderService.addOrder(order),HttpStatus.ACCEPTED);
 	}
 	
 	   @DeleteMapping("/{id}")
-	    public String removeOrderHandler(@PathVariable Integer id) {
+	    public ResponseEntity<String> removeOrderHandler(@PathVariable Integer id) {
 		   if(id==null){
 			   throw new InvalidId("Invalid Uri");
 		   }else {
@@ -54,13 +56,13 @@ public class OrderDetailController {
 			   if (order==null){
 				   throw  new NullValueException("Order not found");
 			   }
-			   return "Deleted " + order;
+			   return new ResponseEntity<String>("Deleted " + order,HttpStatus.ACCEPTED);
 		   }
 
 	    }
 	   
 	    @GetMapping("/{id}")
-	    public OrderDetail viewOrderHandler(@PathVariable Integer id) {
+	    public ResponseEntity<OrderDetail> viewOrderHandler(@PathVariable Integer id) {
 			if(id==null){
 				throw new InvalidId("Invalid Uri");
 			}else {
@@ -68,20 +70,20 @@ public class OrderDetailController {
 				if (order1==null){
 					throw  new NullValueException("Order not found");
 				}
-				return order1;
+				return  new ResponseEntity<OrderDetail>(order1,HttpStatus.ACCEPTED);
 			}
 
 	    }
 	    
 	    
 	    @GetMapping("/all")
-	    public List<OrderDetail> viewAllOrderHandler() {
+	    public ResponseEntity<List<OrderDetail>> viewAllOrderHandler() {
 			
 				List<OrderDetail> order1=orderService.viewAllOrder();
 				if (order1==null){
 					throw  new NullValueException("Order not found");
 				}
-				return order1;
+				return new ResponseEntity<List<OrderDetail>>(order1,HttpStatus.ACCEPTED);
 			
 
 	    }
