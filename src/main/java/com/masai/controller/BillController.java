@@ -6,6 +6,8 @@ import com.masai.exception.NullValueException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,13 +30,14 @@ public class BillController {
 	private BillService billService;
 	
 	@PostMapping("/")
-	public Bill saveBill(@RequestBody Bill bill) {
-		return billService.addBill(bill);
+	public ResponseEntity<Bill> saveBill(@RequestBody Bill bill) {
+		Bill bill2 = billService.addBill(bill);
+		return new ResponseEntity<Bill>(bill,HttpStatus.ACCEPTED);
 	}
 	
 
 	@PutMapping("/{id}/{totalItem}/{totalCost}")
-	public Bill updateBillHandler(@PathVariable Integer id,
+	public ResponseEntity<Bill>  updateBillHandler(@PathVariable Integer id,
 								  @PathVariable Integer totalItem,
 								  @PathVariable Double totalCost) {
 		if(id==null){
@@ -45,12 +48,12 @@ public class BillController {
 			if(bill==null){
 				throw new NullValueException("Value not found");
 			}
-			return bill;
+			return new ResponseEntity<Bill>(bill,HttpStatus.ACCEPTED);
 		}
 	}
 		
 	   @DeleteMapping("/{id}")
-	    public String removeBillHandler(@PathVariable Integer id) {
+	    public ResponseEntity<String> removeBillHandler(@PathVariable Integer id) {
 			if (id==null){
 				throw new InvalidId("Invalid URI");
 			}
@@ -59,12 +62,12 @@ public class BillController {
 				if(bill==null){
 					throw new NullValueException("Value not found");
 				}
-				return "Deleted " + bill;
+				return new ResponseEntity<String>("deleted"+bill,HttpStatus.ACCEPTED);
 			}
 	    }
 	   
 	    @GetMapping("/{id}")
-	    public Bill viewBillHandler(@PathVariable Integer id) {
+	    public ResponseEntity<Bill> viewBillHandler(@PathVariable Integer id) {
 			if (id==null){
 				throw new InvalidId("Invalid URI");
 			}
@@ -73,14 +76,17 @@ public class BillController {
 				if(bill==null){
 					throw new NullValueException("Value not found");
 				}
-				return bill;
+				return new ResponseEntity<Bill>(bill,HttpStatus.ACCEPTED);
 			}
 
 	    }
 	    
 	    @GetMapping("/allBill")
-	    public List<Bill> viewAllBillHandler(){
-			return billService.viewAllBill();
+	    public ResponseEntity<List<Bill>> viewAllBillHandler(){
+	    	if(billService.viewAllBill()==null) {
+	    		throw new NullValueException("Bill not available");
+	    	}
+			return new ResponseEntity<List<Bill>>(billService.viewAllBill(),HttpStatus.ACCEPTED);
 	    	
 	    	
 	    }
